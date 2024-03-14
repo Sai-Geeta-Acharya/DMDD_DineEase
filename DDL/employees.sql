@@ -27,7 +27,7 @@ BEGIN
             ssn         VARCHAR2(11),
             start_date  DATE,
             end_date    DATE,
-            occupation  VARCHAR2(45),
+            role  VARCHAR2(45),
             CONSTRAINT employees_pk PRIMARY KEY (employee_id)
         )';
         dbms_output.put_line('EMPLOYEES table created successfully.');

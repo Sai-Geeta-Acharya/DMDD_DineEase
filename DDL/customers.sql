@@ -8,7 +8,7 @@ BEGIN
     FROM
         user_tables
     WHERE
-        table_name = 'Customers';
+        table_name = 'CUSTOMERS';
         
     IF customers_exists = 0 THEN
         EXECUTE IMMEDIATE '

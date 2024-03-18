@@ -1,8 +1,10 @@
 set SERVEROUTPUT on;
 
 DECLARE
+    -- variable to store the count of existing employees table
     table_exists NUMBER;
 BEGIN
+     -- Check if the employees table already exists
     SELECT
         COUNT(*)
     INTO table_exists
@@ -10,7 +12,8 @@ BEGIN
         user_tables
     WHERE
         table_name = 'EMPLOYEES';
-        
+    
+     -- If employees table does not exist, create it        
     IF table_exists = 0 THEN
         EXECUTE IMMEDIATE '
         CREATE TABLE EMPLOYEES (
@@ -32,10 +35,13 @@ BEGIN
         )';
         dbms_output.put_line('EMPLOYEES table created successfully.');
     ELSE
+         -- If EMPLOYEES table already exists, inform the user
         dbms_output.put_line('EMPLOYEES table already exists.');
     END IF;
-
+    
+-- Exception handling block to catch any errors during table creation
 EXCEPTION
     WHEN OTHERS THEN
         dbms_output.put_line('Error creating table EMPLOYEES: ' || sqlerrm);
 END;
+/

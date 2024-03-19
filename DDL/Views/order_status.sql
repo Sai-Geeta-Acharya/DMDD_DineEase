@@ -16,15 +16,22 @@ BEGIN
         EXECUTE IMMEDIATE 'DROP VIEW ORDER_STATUS';
     END IF;
 
-    -- Recreate the view
+   -- Recreate the view
     EXECUTE IMMEDIATE '
-   CREATE VIEW order_status AS
+    CREATE OR REPLACE VIEW order_status AS
     SELECT
-        order_id,
-        order_date,
-        order_amount,
-        order_status
+        o.order_id,
+        o.order_date,
+        o.order_amount,
+        o.order_status,
+        e.fname || '' '' || e.lname AS employee_name,
+        c.customer_id,
+        c.phone_number
     FROM
-        orders';
+        orders o
+    JOIN
+        employees e ON o.employee_id = e.employee_id
+    JOIN
+        customers c ON o.customer_id = c.customer_id';
 END;
 /

@@ -27,4 +27,4 @@ EXCEPTION
         DBMS_OUTPUT.PUT_LINE('An error occurred: ' || SQLERRM);
 END;
 /
-select * from SALES_PERFORMANCE_ANALYSIS
+--select * from SALES_PERFORMANCE_ANALYSIS

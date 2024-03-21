@@ -35,35 +35,4 @@ BEGIN
         customers c ON o.customer_id = c.customer_id';
 END;
 /
-
-
-
-select * from ORDERS;
-
-
-
-SELECT uc.constraint_name, ucc.column_name, uc.constraint_type
-FROM user_constraints uc
-JOIN user_cons_columns ucc ON uc.constraint_name = ucc.constraint_name
-WHERE uc.constraint_type = 'U';
-
-
-SELECT  text
-FROM user_errors
-WHERE name = 'UNIQUE_SSN';
-
-
-
-
-BEGIN
-  -- Attempt to insert duplicate data
-  INSERT INTO customers 
-  VALUES (203, '1234567890', 101, '123 Main St', 'Cityville', 'Stateville', '12345', 'Countryland');
-EXCEPTION
-  WHEN DUP_VAL_ON_INDEX THEN
-    -- Print the error message and code
-    DBMS_OUTPUT.PUT_LINE(SQLERRM);
-    DBMS_OUTPUT.PUT_LINE(SQLCODE);
-END;
-
-
+--SELECT * FROM ORDER_STATUS;

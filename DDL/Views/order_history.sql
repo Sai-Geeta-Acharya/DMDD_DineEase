@@ -42,3 +42,4 @@ JOIN
     customers c ON o.customer_id = c.customer_id';
 END;
 /
+--SELECT * FROM ORDER_HISTORY;

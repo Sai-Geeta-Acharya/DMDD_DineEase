@@ -21,4 +21,4 @@ BEGIN
     JOIN customers c ON o.customer_id = c.customer_id';
 END;
 /
-
+--SELECT * FROM CUSTOMER_ORDER_DETAILS;

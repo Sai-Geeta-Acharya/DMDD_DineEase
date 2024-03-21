@@ -1,13 +1,78 @@
+set serveroutput on;
 -- Create roles
-CREATE ROLE manager_role;
+DECLARE
+    role_name VARCHAR2(30);
+BEGIN
+    -- Create roles if they don't exist
+    role_name := 'MANAGER_ROLE';
+    BEGIN
+        EXECUTE IMMEDIATE 'CREATE ROLE ' || role_name;
+        DBMS_OUTPUT.PUT_LINE('Role ' || role_name || ' created successfully.');
+    EXCEPTION
+        WHEN OTHERS THEN
+            IF SQLCODE = -1921 THEN
+                DBMS_OUTPUT.PUT_LINE('Role ' || role_name || ' already exists. Skipping...');
+            ELSE
+                RAISE;
+            END IF;
+    END;
 
-CREATE ROLE service_crew_role;
+    role_name := 'SERVICE_CREW_ROLE';
+    BEGIN
+        EXECUTE IMMEDIATE 'CREATE ROLE ' || role_name;
+        DBMS_OUTPUT.PUT_LINE('Role ' || role_name || ' created successfully.');
+    EXCEPTION
+        WHEN OTHERS THEN
+            IF SQLCODE = -1921 THEN
+                DBMS_OUTPUT.PUT_LINE('Role ' || role_name || ' already exists. Skipping...');
+            ELSE
+                RAISE;
+            END IF;
+    END;
 
-CREATE ROLE cashier_role;
+    role_name := 'CASHIER_ROLE';
+    BEGIN
+        EXECUTE IMMEDIATE 'CREATE ROLE ' || role_name;
+        DBMS_OUTPUT.PUT_LINE('Role ' || role_name || ' created successfully.');
+    EXCEPTION
+        WHEN OTHERS THEN
+            IF SQLCODE = -1921 THEN
+                DBMS_OUTPUT.PUT_LINE('Role ' || role_name || ' already exists. Skipping...');
+            ELSE
+                RAISE;
+            END IF;
+    END;
+    
+    role_name := 'KITCHEN_CREW_ROLE';
+    BEGIN
+        EXECUTE IMMEDIATE 'CREATE ROLE ' || role_name;
+        DBMS_OUTPUT.PUT_LINE('Role ' || role_name || ' created successfully.');
+    EXCEPTION
+        WHEN OTHERS THEN
+            IF SQLCODE = -1921 THEN
+                DBMS_OUTPUT.PUT_LINE('Role ' || role_name || ' already exists. Skipping...');
+            ELSE
+                RAISE;
+            END IF;
+    END;
+    
+    role_name := 'CUSTOMER_ROLE';
+    BEGIN
+        EXECUTE IMMEDIATE 'CREATE ROLE ' || role_name;
+        DBMS_OUTPUT.PUT_LINE('Role ' || role_name || ' created successfully.');
+    EXCEPTION
+        WHEN OTHERS THEN
+            IF SQLCODE = -1921 THEN
+                DBMS_OUTPUT.PUT_LINE('Role ' || role_name || ' already exists. Skipping...');
+            ELSE
+                RAISE;
+            END IF;
+    END;
 
-CREATE ROLE kitchen_crew_role;
+END;
+/
 
-CREATE ROLE customer_role;
+
 
 --Customer_role:
 

@@ -14,7 +14,6 @@ BEGIN
     IF table_exists = 0 THEN
         EXECUTE IMMEDIATE '
        CREATE TABLE ORDER_DETAILS (
-    item_count FLOAT NOT NULL,
     order_id INTEGER NOT NULL,
     item_id INTEGER NOT NULL,
     price_per_item FLOAT NOT NULL,

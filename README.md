@@ -67,7 +67,7 @@ For effective management and control, the DineEase project defines the following
 ## How to Run
 
 1. Clone the DineEase repository to your local machine.
-2. Create the restaurant_admin user from admin in SQLL Developer
+2. Create the restaurant_admin user from admin in SQL Developer
 3. Login as restaurant_admin to create tables, insert data, and add roles
 4. Login as users and try accessing the data relevant to the role of the user
 
@@ -77,5 +77,11 @@ For effective management and control, the DineEase project defines the following
 - Venkata Surya Saran Teja Dadi
 - Hasini Muvva
 - Kurapati Saihimaja Chowdary
+
+## New Functions and Procedures
+The following new functions and procedures have been added to the project:
+
+- `PlaceOrderForFood`: This function allows customers to place orders for food items by specifying the item names and quantities.
+- `UpdateOrderStatus`: This procedure updates the status of an order in the 'Orders' table to indicate that it has been provided to the kitchen crew.
 
 

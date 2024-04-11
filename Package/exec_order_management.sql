@@ -6,8 +6,8 @@ DECLARE
 BEGIN
     v_order_id := OrderManagement.placeorderforfood(
         p_customer_id => 228,
-                    p_order_type => 'Walk-in',
-                    p_selected_items => 'PIZZA-1' -- Specify the selected items in the format 'item_name-quantity'
+                    p_order_type => 'Reservation',
+                    p_selected_items => 'pizza-1' -- Specify the selected items in the format 'item_name-quantity', also can list more items with comma ","
                 );
     -- Output the order ID
     DBMS_OUTPUT.PUT_LINE('Order ID: ' || v_order_id);

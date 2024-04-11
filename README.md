@@ -64,12 +64,51 @@ For effective management and control, the DineEase project defines the following
 - **kitchen_crew_role**: Prepare dishes, update inventory stock levels.
 - **customer_role**: Place orders, provide feedback, view order history.
 
+## Package: Order Management
+Package File: Package/order_management.sql
+Package Body File: Package/ordermanagement_body.sql
+
+### Description
+The Order Management package provides functionalities to handle orders placed by customers.
+It includes the following functions and procedures:
+
+PlaceOrderForFood: Allows customers to place orders for food items by specifying the item names and quantities.
+CalculateTotalAmountDue: Calculates the total amount due and itemized costs for a given order.
+ProcessPayment: Processes payments for orders, updating payment information in the Payments table and the status of the order in the Orders table.
+UpdateOrderStatus: Updates the status of an order in the 'Orders' table to indicate that it has been provided to the kitchen crew.
+PrepareDishesForOrder: Prepares dishes for an order by updating inventory and order status.
+CancelOrder: Updates the status of an order in the 'Orders' table to indicate that it has been cancelled.
+TrackOrderProgress: Updates the status of an order in the 'Orders' table to indicate that it has been provided to the kitchen crew.
+
+### How to Execute
+To execute the Order Management package, follow these steps:
+
+1. Open SQL Developer or any other SQL execution tool.
+2. Run the script Package/order_management.sql to create the package specifications.
+3. Run the script Package/ordermanagement_body.sql to create the package body.
+4. To execute the package, run the script Package/exec_order_management.sql.
+
+## Package: User Management
+Package File: Package/user_management.sql
+Package Body File: Package/user_management_body.sql
+
+### Description
+The User Management package provides functionalities to create and delete customer records. It includes the following procedures:
+
+create_customer: Creates a new customer record with the provided details.
+delete_customer: Deletes an existing customer record based on the specified customer ID.
+
+### How to Execute
+To execute the User Management package, follow these steps:
+
+1. Open SQL Developer or any other SQL execution tool.
+2. Run the script Package/user_management.sql to create the package specifications, body and execute the package
 ## How to Run
 
 1. Clone the DineEase repository to your local machine.
 2. Create the restaurant_admin user from admin in SQL Developer
-3. Login as restaurant_admin to create tables, insert data, and add roles
-4. Login as users and try accessing the data relevant to the role of the user
+3. Log in as restaurant_admin to create tables, insert data, and add roles
+4. Log in as users and try accessing the data relevant to the role of the user
 
 ## Contributors
 
@@ -78,10 +117,18 @@ For effective management and control, the DineEase project defines the following
 - Hasini Muvva
 - Kurapati Saihimaja Chowdary
 
-## New Functions and Procedures
-The following new functions and procedures have been added to the project:
+## Functions and Procedures
 
-- `PlaceOrderForFood`: This function allows customers to place orders for food items by specifying the item names and quantities.
-- `UpdateOrderStatus`: This procedure updates the status of an order in the 'Orders' table to indicate that it has been provided to the kitchen crew.
+##Functions
+PlaceOrderForFood: Allows customers to place orders for food items by specifying the item names and quantities.
+CalculateTotalAmountDue: Calculates the total amount due and itemized costs for a given order.
+ProcessPayment: Processes payments for orders, updating payment information in the Payments table and the status of the order in the Orders table.
+
+##Procedures
+UpdateOrderStatus: Updates the status of an order in the 'Orders' table to indicate that it has been provided to the kitchen crew.
+PrepareDishesForOrder: Prepares dishes for an order by updating inventory and order status.
+CancelOrder: Updates the status of an order in the 'Orders' table to indicate that it has been cancelled.
+TrackOrderProgress: Updates the status of an order in the 'Orders' table to indicate that it has been provided to the kitchen crew.
+
 
 

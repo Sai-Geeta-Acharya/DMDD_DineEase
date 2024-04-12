@@ -1,28 +1,63 @@
-CREATE OR REPLACE PROCEDURE track_order_progress (
-    p_order_id IN NUMBER
-) AS
-    v_order_status VARCHAR2(50);
-BEGIN
-    -- Retrieve the current status of the order
-    SELECT order_status INTO v_order_status
-    FROM orders
-    WHERE order_id = p_order_id;
+/*
+    This procedure updates the status of an order in the 'Orders' table to indicate that it has been provided to the kitchen crew.
+    
+    Input:
+    - p_order_id: The ID of the order to be updated.
+    
+    Exceptions:
+    - NO_DATA_FOUND: Raised if the specified order ID is not found.
+    - OTHERS: Handles any other exceptions and raises an error indicating that an error occurred while updating the order status.
+    */
+    CREATE OR REPLACE PROCEDURE trackorderprogress (
+        p_order_id IN NUMBER
+    ) AS
+        v_order_status VARCHAR2(50);
+        v_order_amount NUMBER;
+    BEGIN
+            -- Retrieve the current status of the order
+        SELECT
+            order_status,
+            order_amount
+        INTO
+            v_order_status,
+            v_order_amount
+        FROM
+            orders
+        WHERE
+            order_id = p_order_id;
 
-    -- Display the current status
-    DBMS_OUTPUT.PUT_LINE('Order ID: ' || p_order_id || ', Current Status: ' || v_order_status);
-EXCEPTION
-    WHEN NO_DATA_FOUND THEN
-        -- Custom message for order not found
-        DBMS_OUTPUT.PUT_LINE('Order ID ' || p_order_id || ' not found.');
-    WHEN OTHERS THEN
-        -- Custom message for other errors
-        DBMS_OUTPUT.PUT_LINE('An error occurred while tracking the order status.');
-END;
-/
+        IF ( v_order_status = 'Completed' ) THEN
+            dbms_output.put_line('Order ID: '
+                                 || p_order_id
+                                 || ', Current Status: '
+                                 || v_order_status
+                                 || ', Amount Due: $'
+                                 || v_order_amount);
 
----Execution
-set serveroutput on;
+        ELSE
+            -- Display the current status
+            dbms_output.put_line('Order ID: '
+                                 || p_order_id
+                                 || ', Current Status: '
+                                 || v_order_status);
+        END IF;
+
+    EXCEPTION
+        WHEN no_data_found THEN
+                -- Custom message for order not found
+            dbms_output.put_line('Order ID '
+                                 || p_order_id
+                                 || ' not found.');
+        WHEN OTHERS THEN
+                -- Custom message for other errors
+            dbms_output.put_line('An error occurred while tracking the order status.');
+    END trackorderprogress;
+    /
+    
+    --EXECUTION
+    SET SERVEROUTPUT ON;
+    -- Execute the trackorderprogress procedure
 BEGIN
-    track_order_progress(p_order_id => 6);
+    trackorderprogress(p_order_id => 17); -- Specify the order ID
 END;
 /

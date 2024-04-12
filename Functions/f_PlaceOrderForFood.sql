@@ -1,5 +1,3 @@
-
-
  /*
     This function enables customers to place orders for food items by specifying the item names and quantities.
     It takes the following input parameters:
@@ -38,13 +36,16 @@
                 customer_id = p_customer_id;
 
             IF v_customer_count = 0 THEN
-                raise_application_error(-20101, 'Customer does not exist.');
+                dbms_output.put_line('Customer does not exist.');
+              -- raise_application_error(-20101, 'Customer does not exist.');
+               RETURN 0;
             END IF;
     
             -- Check if order type is valid
             IF p_order_type NOT IN ( 'Reservation', 'Dine-in', 'Delivery', 'Walk-in', 'Online' ) THEN
-                raise_application_error(-20002, 'Invalid order type. Please select from: "Reservation", "Dine-in", "Delivery", "Walk-in", "Online".'
-                );
+                dbms_output.put_line('Invalid order type. Please select from: "Reservation", "Dine-in", "Delivery", "Walk-in", "Online".');
+                --raise_application_error(-20002, 'Invalid order type. Please select from: "Reservation", "Dine-in", "Delivery", "Walk-in", "Online".');
+                 RETURN 0;
             END IF;
 
             IF p_order_type = 'Reservation' THEN
@@ -198,7 +199,9 @@
     
                     -- Check if quantity is specified
                     IF v_quantity IS NULL THEN
-                        raise_application_error(-20004, 'Quantity not specified for item: ' || v_item_name);
+                        dbms_output.put_line('Quantity not specified for item: ' || v_item_name);
+                        --raise_application_error(-20004, 'Quantity not specified for item: ' || v_item_name);
+                        return 0;
                     END IF;
     
                     -- Check if the item is already in the order_details for this order
@@ -241,9 +244,8 @@
                         -- Handle other exceptions
                         IF sqlcode = -20003 THEN
                             -- Invalid item name error
-                            dbms_output.put_line('Error: Invalid item name: ' || v_item_name);
-                            -- Continue to the next item in the loop
-                            CONTINUE;
+                            dbms_output.put_line('Invalid item name: ' || v_item_name || 'Please check our menu');
+                            RETURN 0; 
                         ELSE
                             -- Handle other exceptions
                             dbms_output.put_line('Error: ' || sqlerrm);
@@ -266,6 +268,7 @@
         -- Return the order ID
         RETURN v_order_id;
     END placeorderforfood;
+    /
     
     
     

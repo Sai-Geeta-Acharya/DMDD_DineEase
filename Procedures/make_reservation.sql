@@ -35,4 +35,3 @@ BEGIN
     make_reservation(p_customer_id => 207, p_reservation_date => TO_DATE('2024-04-12', 'YYYY-MM-DD'));
 END;
 /
-select * from reservations;

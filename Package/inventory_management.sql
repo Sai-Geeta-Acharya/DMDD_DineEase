@@ -1,4 +1,4 @@
 CREATE OR REPLACE PACKAGE InventoryManagement AS
-    PROCEDURE RefillStock(Item_ID IN NUMBER);
+    FUNCTION RefillStock(Item_ID IN NUMBER) RETURN VARCHAR2;
 END InventoryManagement;
 /

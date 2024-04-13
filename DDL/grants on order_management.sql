@@ -64,6 +64,16 @@ GRANT EXECUTE ON trackorderprogress TO CASHIER_ROLE;
 GRANT EXECUTE ON trackorderprogress TO CUSTOMER_ROLE;
 
 
+--SYNONYMS:
+CREATE PUBLIC SYNONYM cust FOR restaurant_admin.customers;
+CREATE PUBLIC SYNONYM ordr FOR restaurant_admin.orders;
+CREATE PUBLIC SYNONYM ordr_det FOR restaurant_admin.order_details;
+CREATE PUBLIC SYNONYM itm FOR restaurant_admin.items;
+CREATE PUBLIC SYNONYM inv FOR restaurant_admin.inventory;
+
+GRANT SELECT ON cust TO customer_role;
+GRANT SELECT ON ordr TO kitchen_crew_role;
+
 
 
 

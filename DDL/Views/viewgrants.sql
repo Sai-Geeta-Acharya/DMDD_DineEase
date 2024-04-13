@@ -1,0 +1,28 @@
+GRANT SELECT ON order_status TO manager_role ;
+
+GRANT SELECT ON order_status TO service_crew_role ;
+
+GRANT SELECT ON order_status TO customer_role ;
+
+
+
+GRANT SELECT ON RESERVATION_DETAILS TO manager_role ;
+
+GRANT SELECT ON RESERVATION_DETAILS TO service_crew_role ;
+
+GRANT SELECT ON RESERVATION_DETAILS TO customer_role ;
+
+
+GRANT SELECT ON SALES_PERFORMANCE_ANALYSIS TO manager_role ;
+
+GRANT SELECT ON SALES_PERFORMANCE_ANALYSIS TO manager_role ;
+
+
+
+GRANT SELECT ON TOTAL_AMOUNT_DUE TO manager_role ;
+
+GRANT SELECT ON TOTAL_AMOUNT_DUE TO customer_role ;
+
+GRANT SELECT ON TOTAL_AMOUNT_DUE TO cashier_role ;
+
+
